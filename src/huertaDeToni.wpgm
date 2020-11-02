@@ -13,6 +13,60 @@ program huertaDeToni {
 	// Agregamos al amigo Toni.
 	game.addVisual(toni)
 	
+	// MOVIMIENTOS
+	keyboard.up().onPressDo({toni.moverNorte()})
+	keyboard.down().onPressDo({toni.moverSur()})
+	keyboard.right().onPressDo({toni.moverEste()})
+	keyboard.left().onPressDo({toni.moverOeste()})
+	
+	// SEMBRAR PLANTAS
+	keyboard.m().onPressDo({ 
+		const maiz = new Maiz(position = toni.position().rigth(1))
+		toni.sembrarMaiz(maiz)
+		game.addVisual(maiz)
+	})
+	
+	keyboard.t().onPressDo({
+		const trigo = new Trigo(position = toni.position().rigth(1))
+		toni.sembrarTrigo(trigo)
+		game.addVisual(trigo)
+	})
+	
+	keyboard.o().onPressDo({
+		const tomaco = new Tomaco(position = toni.position().rigth(1))
+		toni.sembrarTomaco(tomaco)
+		game.addVisual(tomaco)
+	})
+	
+	// REGAR UNA Y TODAS LAS PLANTAS (VER TEMA QUE RIEGE CUALQUIERA)
+	keyboard.a().onPressDo({
+		game.whenCollideDo( toni, { maiz => toni.regarPlanta(maiz) } )
+	})
+	
+	keyboard.r().onPressDo({
+
+	})
+	
+	// COSECHAR UNA Y TODAS LAS PLANTAS
+	keyboard.x().onPressDo({
+	
+	})
+	
+	keyboard.c().onPressDo({
+		
+	})
+	
+	// VENDER LA COSECHA
+	keyboard.v().onPressDo({
+	// LA VENTA SE REFLEJA EN MONEDAS DE ORO	
+	})
+	
+	// MOSTRAR EL ESTADO
+	keyboard.space().onPressDo({
+	// RETORNAR ALGO COMO: 
+	game.say(toni, "Tengo 80 monedas y me quedan 3 plantas para vender")
+	})
+	
 	/*
 	 * Acá usamos addVisualIn en vez de addVisual, y por esto 
 	 * no es necesario que la pachamama conozca su position.

@@ -1,0 +1,11 @@
+/*Agregar las siguientes validaciones:
+1.Al sembrar, arrojar error si ya había otra planta en la celda actual.
+2.Al cosechar, arrojar error si la planta de la celda actual no está lista.
+3.Al cosechar, arrojar error si no hay ninguna planta en la celda actual.
+*/
+
+test "testX" {
+
+	assert.that(true)
+
+}

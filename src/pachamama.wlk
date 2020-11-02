@@ -1,5 +1,6 @@
 object pachamama {
-	method image() {
-		return "pachamama-agradecida.png"
-	}
+	var property imagen = "pachamama-agradecida.png"
+
+	method fumigar(){}
+	method llover(){}
 }
