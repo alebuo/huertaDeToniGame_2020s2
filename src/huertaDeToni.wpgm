@@ -21,26 +21,26 @@ program huertaDeToni {
 	
 	// SEMBRAR PLANTAS
 	keyboard.m().onPressDo({ 
-		const maiz = new Maiz(position = toni.position().rigth(1))
+		const maiz = new Maiz(position = toni.position())
 		toni.sembrarMaiz(maiz)
 		game.addVisual(maiz)
 	})
 	
 	keyboard.t().onPressDo({
-		const trigo = new Trigo(position = toni.position().rigth(1))
+		const trigo = new Trigo(position = toni.position())
 		toni.sembrarTrigo(trigo)
 		game.addVisual(trigo)
 	})
 	
 	keyboard.o().onPressDo({
-		const tomaco = new Tomaco(position = toni.position().rigth(1))
+		const tomaco = new Tomaco(position = toni.position())
 		toni.sembrarTomaco(tomaco)
 		game.addVisual(tomaco)
 	})
 	
 	// REGAR UNA Y TODAS LAS PLANTAS (VER TEMA QUE RIEGE CUALQUIERA)
 	keyboard.a().onPressDo({
-		game.whenCollideDo( toni, { maiz => toni.regarPlanta(maiz) } )
+		game.colliders(toni) { maiz => toni.regarPlanta(maiz) } 
 	})
 	
 	keyboard.r().onPressDo({
@@ -64,7 +64,8 @@ program huertaDeToni {
 	// MOSTRAR EL ESTADO
 	keyboard.space().onPressDo({
 	// RETORNAR ALGO COMO: 
-	game.say(toni, "Tengo 80 monedas y me quedan 3 plantas para vender")
+	game.say(toni, "Tengo" + toni.monedasDeOro() + "monedas y me quedan"
+		+ toni.plantasSembradas().size() + "plantas para vender")
 	})
 	
 	/*
@@ -72,6 +73,17 @@ program huertaDeToni {
 	 * no es necesario que la pachamama conozca su position.
 	 */
 	game.addVisualIn(pachamama, game.at(0, 13));
+	
+	// FUMIGAR		
+	keyboard.f().onPressDo({
+		pachamama.fumigar()
+	})
+	
+	// LLOVER		
+	keyboard.l().onPressDo({
+		pachamama.llover()
+	})
+	
 	
 	/* 
 	 * Agregamos una fila de maices. Ojo al regar, que Toni no va a conocer

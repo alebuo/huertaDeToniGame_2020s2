@@ -4,7 +4,7 @@ import plantas.*
 object toni {
 	const property image = "toni.png"
 	var property position = game.at(3, 3)
-	const property maizSembrado = []
+	const property plantasSembradas = []
 	var property monedasDeOro = 0
 	
 	method moverNorte(){ self.position(self.position().up(1)) }
@@ -13,9 +13,9 @@ object toni {
 	method moverOeste(){ self.position(self.position().left(1))}
 	
 		// SEMBRAR MAIZ
-	method sembrarMaiz(maiz){ maizSembrado.add(maiz) }
-	method sembrarTrigo(trigo){ maizSembrado.add(trigo) }
-	method sembrarTomaco(tomaco){ maizSembrado.add(tomaco) }
+	method sembrarMaiz(maiz){ plantasSembradas.add(maiz) }
+	method sembrarTrigo(trigo){ plantasSembradas.add(trigo) }
+	method sembrarTomaco(tomaco){ plantasSembradas.add(tomaco) }
 	
 	// METHODS REGAR
 	/* hay que corregir que pasa con cada planta  */
@@ -23,7 +23,9 @@ object toni {
 	
 	
 	// METHODS COSECHAR
-	method cosecharPlanta(maiz){ maizSembrado.remove(maiz)  }
+	method cosecharPlanta(planta){ 
+		plantasSembradas.remove(planta)
+	}
 	
 	
 	
