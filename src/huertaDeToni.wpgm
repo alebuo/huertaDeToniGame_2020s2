@@ -30,33 +30,35 @@ program huertaDeToni {
 	})
 	
 	keyboard.t().onPressDo({
-		const trigo = new Trigo(position = toni.position())
+		//const trigo = new Trigo(position = toni.position())
 		toni.sembrarTrigo()
-		game.addVisual(trigo)
+		//game.addVisual(trigo)
 	})
 	
 	keyboard.o().onPressDo({
-		const tomaco = new Tomaco(position = toni.position())
+		//const tomaco = new Tomaco(position = toni.position())
 		toni.sembrarTomaco()
-		game.addVisual(tomaco)
+		//game.addVisual(tomaco)
 	})
 	
 	// REGAR UNA Y TODAS LAS PLANTAS (VER TEMA QUE RIEGE CUALQUIERA)
 	keyboard.a().onPressDo({
-		game.colliders(toni) { a => toni.regarLasPlantas() } 
+		//game.colliders(toni) { a => toni.regarLasPlantas() } 
+		toni.regarLasPlantas()
 	})
 	
 	keyboard.r().onPressDo({
-
+	//falta pasarle el dato de planta a quitar
+	//toni.cosecharPlanta(planta)
 	})
 	
 	// COSECHAR UNA Y TODAS LAS PLANTAS
 	keyboard.x().onPressDo({
-	
+	toni.plantasListasParaCosechar()
 	})
 	
 	keyboard.c().onPressDo({
-		
+		toni.cosecharTodo()
 	})
 	
 	// VENDER LA COSECHA
