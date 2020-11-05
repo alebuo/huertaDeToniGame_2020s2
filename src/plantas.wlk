@@ -15,12 +15,13 @@ class Plantas{
 class Maiz inherits Plantas{
 	const property imagenes = ["maiz_bebe.png", "maiz_adulto.png"] 
 	var property etapaEvolucion = 0
-	var property imagen = imagenes.get(etapaEvolucion)
+	//var property imagen = imagenes.get(etapaEvolucion)
+	override method image() = imagenes.get(etapaEvolucion)
 	
 	override method monedasQueVale(){return 50}
 	override method regada() { 
 		etapaEvolucion = 1
-		imagen = imagenes.get(etapaEvolucion)
+		image = imagenes.get(etapaEvolucion)
 	}
 	override method esCosechable() { return etapaEvolucion == 1}
 }
