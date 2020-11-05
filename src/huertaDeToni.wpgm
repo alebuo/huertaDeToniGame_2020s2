@@ -50,7 +50,7 @@ program huertaDeToni {
 	})
 	
 	keyboard.c().onPressDo({
-		toni.cosecharTodo()		
+		toni.cosecharTodo()	
 	})
 	
 	// VENDER LA COSECHA

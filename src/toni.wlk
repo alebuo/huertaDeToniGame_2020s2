@@ -51,7 +51,8 @@ object toni {
 	
 	method cosecharTodo() { 
 		self.agregarACosecha(self.plantasListasParaCosechar())
-		self.plantasListasParaCosechar().forEach( {planta => self.cosecharPlanta(planta)} )	
+		self.plantasListasParaCosechar().forEach( {planta => self.cosecharPlanta(planta) game.removeVisual(planta)} )
+		//game.removeVisual(visual)
 	}
 	
 	// VENDER
