@@ -23,49 +23,40 @@ program huertaDeToni {
 	
 	// SEMBRAR PLANTAS
 	keyboard.m().onPressDo({ 
-		//const maiz = new Maiz(position = toni.position())
 		toni.sembrarMaiz()
-		//maiz.image(maiz.image())
-		//game.addVisual(maiz)
 	})
 	
 	keyboard.t().onPressDo({
-		//const trigo = new Trigo(position = toni.position())
 		toni.sembrarTrigo()
-		//game.addVisual(trigo)
 	})
 	
 	keyboard.o().onPressDo({
-		//const tomaco = new Tomaco(position = toni.position())
 		toni.sembrarTomaco()
-		//game.addVisual(tomaco)
 	})
 	
 	// REGAR UNA Y TODAS LAS PLANTAS (VER TEMA QUE RIEGE CUALQUIERA)
 	keyboard.r().onPressDo({
-		//game.colliders(toni) { a => toni.regarLasPlantas() } 
 		toni.regarLasPlantas()
 	})
 	
 	keyboard.u().onPressDo({
-	//falta pasarle el dato de planta a quitar
-	//toni.cosecharPlanta(planta)
+	
 	})
 	
 	// COSECHAR UNA Y TODAS LAS PLANTAS
+	//Este say sirve para ver la info de tony y las plantas. Despues podemos eliminarlo.
 	keyboard.p().onPressDo({
-	toni.plantasListasParaCosechar()
+	game.say(toni, "Hay" + toni.plantasListasParaCosechar().size() + "plantas para cosechar. Son estas:" + toni.plantasListasParaCosechar() )
 	})
 	
 	keyboard.c().onPressDo({
-		toni.cosecharTodo()
-		
-		
+		toni.cosecharTodo()		
 	})
 	
 	// VENDER LA COSECHA
 	keyboard.v().onPressDo({
-	// LA VENTA SE REFLEJA EN MONEDAS DE ORO	
+	// LA VENTA SE REFLEJA EN MONEDAS DE ORO
+	toni.venderCosecha()
 	})
 	
 	// MOSTRAR EL ESTADO

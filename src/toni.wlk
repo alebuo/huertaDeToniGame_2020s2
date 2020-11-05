@@ -40,7 +40,7 @@ object toni {
 	// METHODS COSECHAR
 	method cosecharPlanta(planta){ 
 		plantasSembradas.remove(planta)
-		game.removeVisual(planta)	
+		
 	}
 	
 	method plantasListasParaCosechar() {

@@ -5,7 +5,7 @@ import toni.*
 
 object pachamama {
 	var property nivelDeAgradecimiento = 10
-	var property imagen = "pachamama-agradecida.png"
+	var property image = "pachamama-agradecida.png"
 	
 	method fumigar(){
 		nivelDeAgradecimiento = 0
@@ -22,7 +22,7 @@ object pachamama {
 	}
 	
 	method cambiarImgPachamama(){
-		if (self.estaAgradecida()) {imagen = "pachamama-agradecida.png"}
-			else { imagen = "pachamama-triste.png" }
+		if (self.estaAgradecida()) {image = "pachamama-agradecida.png"}
+			else { image = "pachamama-triste.png" }
 	}
 }
