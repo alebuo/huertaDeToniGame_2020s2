@@ -9,7 +9,7 @@ class Plantas{
 	method monedasQueVale()
 	method regada()
 	method esCosechable()	
-	
+	method esLibreDeGluten(){return true}	
 }
 
 class Maiz inherits Plantas{
@@ -41,7 +41,9 @@ class Trigo inherits Plantas{
 		if (etapaEvolucion == 3) { etapaEvolucion = 0} else {etapaEvolucion += 1}
 		image = imagenes.get(etapaEvolucion)
 	}	
-		override method esCosechable() { return etapaEvolucion >= 2 }
+	
+	override method esCosechable() { return etapaEvolucion >= 2 }
+	override method esLibreDeGluten(){return false}
 }
 
 class Tomaco inherits Plantas {
