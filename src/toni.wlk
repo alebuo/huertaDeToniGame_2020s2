@@ -12,21 +12,39 @@ object toni {
 	method moverEste(){ self.position(self.position().right(1))}
 	method moverOeste(){ self.position(self.position().left(1))}
 	
-		// SEMBRAR MAIZ
-	method sembrarMaiz(maiz){ plantasSembradas.add(maiz) }
-	method sembrarTrigo(trigo){ plantasSembradas.add(trigo) }
-	method sembrarTomaco(tomaco){ plantasSembradas.add(tomaco) }
+	// SEMBRAR MAIZ
+	method sembrar(planta){
+		// position.clone().drawElement(planta)
+		plantasSembradas.add(planta)
+		//posicionPlantas.add(position)
+		game.addVisual(planta)		
+	}
+	method posicionSiembra() { return position.clone() }
+	
+	method sembrarMaiz(){ self.sembrar(new Maiz(position=self.posicionSiembra())) }
+	method sembrarTrigo(){ self.sembrar(new Trigo(position=self.posicionSiembra())) }
+	method sembrarTomaco(){ self.sembrar(new Tomaco(position=self.posicionSiembra())) }
+	
+	
 	
 	// METHODS REGAR
-	/* hay que corregir que pasa con cada planta  */
-	method regarPlanta(maiz){ maiz.imagen("maiz_adulto.png") }
-	
+
+	method regarLasPlantas(){
+		plantasSembradas.forEach( {planta => planta.regada()} )
+	}
 	
 	// METHODS COSECHAR
 	method cosecharPlanta(planta){ 
 		plantasSembradas.remove(planta)
 	}
 	
+	method plantasListasParaCosechar() {
+		return plantasSembradas.all( {planta => planta.esCosechable()} )
+	}
+	
+	method cosecharTodo() { 
+		plantasSembradas.forEach( {planta => self.cosecharPlanta(planta)} )
+	}
 	
 	
 	
