@@ -42,23 +42,25 @@ program huertaDeToni {
 	})
 	
 	// REGAR UNA Y TODAS LAS PLANTAS (VER TEMA QUE RIEGE CUALQUIERA)
-	keyboard.a().onPressDo({
+	keyboard.r().onPressDo({
 		//game.colliders(toni) { a => toni.regarLasPlantas() } 
 		toni.regarLasPlantas()
 	})
 	
-	keyboard.r().onPressDo({
+	keyboard.u().onPressDo({
 	//falta pasarle el dato de planta a quitar
 	//toni.cosecharPlanta(planta)
 	})
 	
 	// COSECHAR UNA Y TODAS LAS PLANTAS
-	keyboard.x().onPressDo({
+	keyboard.p().onPressDo({
 	toni.plantasListasParaCosechar()
 	})
 	
 	keyboard.c().onPressDo({
 		toni.cosecharTodo()
+		
+		
 	})
 	
 	// VENDER LA COSECHA
