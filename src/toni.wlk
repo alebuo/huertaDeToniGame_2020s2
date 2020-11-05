@@ -65,7 +65,18 @@ object toni {
 		plantasCosechadas.forEach({planta => self.venderPlanta(planta)})
 	}
 	
-	method paraCuantosDiasLeAlcanza() {}
-	method cuantoHayParaCeliacos() {}
-	method convieneRegar() {}
+	
+	method dineroAVender() {
+		return plantasCosechadas.sum({d => d.monedasQueVale()})
+	}
+	method paraCuantosDiasLeAlcanza() {
+		return ( monedasDeOro + self.dineroAVender() ) / 200
+	}
+	method cuantoHayParaCeliacos(){
+		return plantasSembradas.count({p => p.esLibreDeGluten()})
+	}
+	
+	method convieneRegar(){
+		return not plantasSembradas.all({p => p.esCosechable()})
+	}
 }
