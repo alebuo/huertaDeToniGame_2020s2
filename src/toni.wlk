@@ -54,6 +54,16 @@ object toni {
 		self.plantasListasParaCosechar().forEach( {planta => self.cosecharPlanta(planta)} )	
 	}
 	
+	// VENDER
+	// ========
+	method venderPlanta(planta){
+		monedasDeOro += planta.monedasQueVale()
+		plantasCosechadas.remove(planta)
+	}
+	
+	method venderCosecha(){
+		plantasCosechadas.forEach({planta => self.venderPlanta(planta)})
+	}
 	
 	method paraCuantosDiasLeAlcanza() {}
 	method cuantoHayParaCeliacos() {}
