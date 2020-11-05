@@ -35,22 +35,26 @@ program huertaDeToni {
 	})
 	
 	// REGAR UNA Y TODAS LAS PLANTAS (VER TEMA QUE RIEGE CUALQUIERA)
-	keyboard.r().onPressDo({
+	keyboard.a().onPressDo({
 		toni.regarLasPlantas()
 	})
 	
-	keyboard.u().onPressDo({
-	
+	//debe regar solo la planta en el lugar actual
+	keyboard.r().onPressDo({
+	toni.regarActual(game.colliders(toni))
 	})
 	
 	// COSECHAR UNA Y TODAS LAS PLANTAS
-	//Este say sirve para ver la info de tony y las plantas. Despues podemos eliminarlo.
+	//info
 	keyboard.p().onPressDo({
 	game.say(toni, "Hay" + toni.plantasListasParaCosechar().size() + "plantas para cosechar. Son estas:" + toni.plantasListasParaCosechar() )
 	})
 	
-	keyboard.c().onPressDo({
+	keyboard.x().onPressDo({
 		toni.cosecharTodo()	
+	})
+	keyboard.c().onPressDo({
+		toni.cosecharActual(game.colliders(toni))
 	})
 	
 	// VENDER LA COSECHA
@@ -61,9 +65,28 @@ program huertaDeToni {
 	
 	// MOSTRAR EL ESTADO
 	keyboard.space().onPressDo({
-	// RETORNAR ALGO COMO: 
 	game.say(toni, "Tengo" + toni.monedasDeOro() + "monedas y me quedan" + toni.plantasSembradas().size() + "plantas para vender" )
 	})
+	
+	//info
+	keyboard.d().onPressDo({
+	game.say(toni, "Las monedas me alcanzan para " + toni.paraCuantosDiasLeAlcanza() + "dias." )
+	
+	})
+	
+	//info
+	keyboard.e().onPressDo({
+	game.say(toni, "Plantas sembradas apto celiacos: " + toni.cuantoHayParaCeliacos())
+	
+	})
+	
+	//info
+	keyboard.g().onPressDo({
+	game.say(toni, "Conviene regar?: " + toni.convieneRegar())
+	
+	})
+	
+	
 	
 	/*
 	 * Acá usamos addVisualIn en vez de addVisual, y por esto 

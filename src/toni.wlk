@@ -37,6 +37,10 @@ object toni {
 		plantasSembradas.forEach( {planta => planta.regada()} )
 	}
 	
+	method regarActual(plantaIndividual){
+			plantaIndividual.forEach( {planta => planta.regada()} )	
+	}
+	
 	// METHODS COSECHAR
 	method cosecharPlanta(planta){ 
 		plantasSembradas.remove(planta)
@@ -54,7 +58,11 @@ object toni {
 		self.plantasListasParaCosechar().forEach( {planta => self.cosecharPlanta(planta) game.removeVisual(planta)} )
 		//game.removeVisual(visual)
 	}
-	
+	method cosecharActual(planta) { 
+		self.agregarACosecha(planta)
+		self.cosecharPlanta(planta) 
+		game.removeVisual(planta)
+	}
 	// VENDER
 	// ========
 	method venderPlanta(planta){
