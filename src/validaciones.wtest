@@ -3,6 +3,12 @@
 2.Al cosechar, arrojar error si la planta de la celda actual no está lista.
 3.Al cosechar, arrojar error si no hay ninguna planta en la celda actual.
 */
+import wollok.game.*
+import toni.*
+import plantas.*
+import mercados.*
+import pachamama.*
+
 
 test "testX" {
 

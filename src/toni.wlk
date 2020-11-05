@@ -1,5 +1,8 @@
 import wollok.game.*
 import plantas.*
+import mercados.*
+import pachamama.*
+
 
 object toni {
 	const property image = "toni.png"

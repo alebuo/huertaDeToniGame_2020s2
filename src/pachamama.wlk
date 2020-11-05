@@ -1,3 +1,8 @@
+import wollok.game.*
+import plantas.*
+import mercados.*
+import toni.*
+
 object pachamama {
 	var property image = "pachamama-agradecida.png"
 		

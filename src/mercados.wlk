@@ -1,3 +1,8 @@
+import wollok.game.*
+import toni.*
+import plantas.*
+import pachamama.*
+
 class Mercado {
 	var property image = "mercado.png"
 	var property cantMonedas = 10000

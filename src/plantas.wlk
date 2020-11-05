@@ -1,3 +1,8 @@
+import wollok.game.*
+import toni.*
+import mercados.*
+import pachamama.*
+
 class Plantas{
 	var property image = null
 	var property position

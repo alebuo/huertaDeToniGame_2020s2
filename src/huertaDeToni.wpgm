@@ -67,8 +67,7 @@ program huertaDeToni {
 	// MOSTRAR EL ESTADO
 	keyboard.space().onPressDo({
 	// RETORNAR ALGO COMO: 
-	game.say(toni, "Tengo" + toni.monedasDeOro() + "monedas y me quedan"
-		+ toni.plantasSembradas().size() + "plantas para vender")
+	game.say(toni, "Tengo" + toni.monedasDeOro() + "monedas y me quedan" + toni.plantasSembradas().size() + "plantas para vender" )
 	})
 	
 	/*
