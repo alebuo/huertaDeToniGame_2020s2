@@ -9,6 +9,7 @@ object toni {
 	var property position = game.at(3, 3)
 	const property plantasSembradas = []
 	var property monedasDeOro = 0
+	const property plantasCosechadas = []
 	
 	method moverNorte(){ self.position(self.position().up(1)) }
 	method moverSur(){ self.position(self.position().down(1)) }
@@ -39,19 +40,19 @@ object toni {
 	// METHODS COSECHAR
 	method cosecharPlanta(planta){ 
 		plantasSembradas.remove(planta)
-		game.removeVisual(planta)
-		
+		game.removeVisual(planta)	
 	}
 	
 	method plantasListasParaCosechar() {
-		return plantasSembradas.all( {planta => planta.esCosechable()} )
+		return plantasSembradas.filter( {planta => planta.esCosechable()} )
 	}
+	
+	method agregarACosecha(lista){ plantasCosechadas.addAll(lista) }
 	
 	method cosecharTodo() { 
-		plantasSembradas.forEach( {planta => self.cosecharPlanta(planta)} )
-		
+		self.agregarACosecha(self.plantasListasParaCosechar())
+		self.plantasListasParaCosechar().forEach( {planta => self.cosecharPlanta(planta)} )	
 	}
-	
 	
 	
 	method paraCuantosDiasLeAlcanza() {}
