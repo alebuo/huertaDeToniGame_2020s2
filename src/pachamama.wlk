@@ -4,9 +4,25 @@ import mercados.*
 import toni.*
 
 object pachamama {
-	var property image = "pachamama-agradecida.png"
-		
-	// FUMIGAR Y LLOVER PRODUCEN EFECTOS EN EL CAMPO?
-	method fumigar(){ image = "pachamama-triste.png" }
-	method llover(){ image = "pachamama-agradecida.png" }
+	var property nivelDeAgradecimiento = 10
+	var property imagen = "pachamama-agradecida.png"
+	
+	method fumigar(){
+		nivelDeAgradecimiento = 0
+		self.cambiarImgPachamama()
+	}
+	
+	method llover(){ 
+		nivelDeAgradecimiento += 5
+		self.cambiarImgPachamama()
+	}
+	
+	method estaAgradecida(){
+		return (nivelDeAgradecimiento >= 10)
+	}
+	
+	method cambiarImgPachamama(){
+		if (self.estaAgradecida()) {imagen = "pachamama-agradecida.png"}
+			else { imagen = "pachamama-triste.png" }
+	}
 }
