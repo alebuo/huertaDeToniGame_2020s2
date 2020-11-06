@@ -11,18 +11,17 @@ class Plantas{
 	method esCosechable()	
 	method esLibreDeGluten(){return true}	
 }
-
 class Maiz inherits Plantas{
 	const property imagenes = ["maiz_bebe.png", "maiz_adulto.png"] 
 	var property etapaEvolucion = 0
 	var property imagen = imagenes.get(etapaEvolucion)
 	
-	override method monedasQueVale(){return 150}
+	override method monedasQueVale(){ return if(pachamama.estaAgradecida()) 180 else 150 }
 	override method regada() { 
-		etapaEvolucion = 1
+		etapaEvolucion = 1 
 		imagen = imagenes.get(etapaEvolucion)
 	}
-	override method esCosechable() { return etapaEvolucion == 1 }	
+	override method esCosechable() { return etapaEvolucion == 1}
 }
 
 
@@ -31,14 +30,10 @@ class Trigo inherits Plantas{
 	var property etapaEvolucion = 0
 	var property imagen = imagenes.get(etapaEvolucion)
 	
-	method valoracionMoneda(){
+	override method monedasQueVale(){
 		return if (etapaEvolucion == 2) 100 
 		else if (etapaEvolucion == 3) 200 
 		else 0
-	}
-	
-	override method monedasQueVale(){
-		return if(pachamama.estaAgradecida()) 180 else self.valoracionMoneda()
 	}
 	
 	method nroEvolucion(){
@@ -52,7 +47,7 @@ class Trigo inherits Plantas{
 	}
 	
 	override method esCosechable() { return etapaEvolucion >= 2 }
-	override method esLibreDeGluten(){ return false }
+	override method esLibreDeGluten(){return false}
 }
 
 
@@ -72,3 +67,6 @@ class Tomaco inherits Plantas {
 		return agradecida
 	}
 }
+
+
+
