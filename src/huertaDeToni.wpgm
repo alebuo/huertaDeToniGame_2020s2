@@ -54,7 +54,8 @@ program huertaDeToni {
 		toni.cosecharTodo()	
 	})
 	keyboard.c().onPressDo({
-		
+		//No se esta eliminando la planta de la celda.
+		toni.cosecharActual(game.colliders(toni))
 	})
 	
 	// VENDER LA COSECHA

@@ -58,6 +58,19 @@ object toni {
 		self.plantasListasParaCosechar().forEach( {planta => self.cosecharPlanta(planta) game.removeVisual(planta)} )
 	}
 	
+	method cosecharActual(planta) { 
+		if(planta.any({p => p.esCosechable()})){
+			self.agregarACosecha(planta)
+			self.cosecharPlanta(planta)
+			game.removeVisual(game.colliders(self))
+		}else{		
+		}
+			
+	}
+	
+	
+	
+	
 	// VENDER
 	// ========
 	method venderPlanta(planta){
