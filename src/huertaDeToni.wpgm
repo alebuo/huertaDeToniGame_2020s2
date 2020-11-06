@@ -54,7 +54,7 @@ program huertaDeToni {
 		toni.cosecharTodo()	
 	})
 	keyboard.c().onPressDo({
-		toni.cosecharActual(game.colliders(toni))
+		
 	})
 	
 	// VENDER LA COSECHA
@@ -65,18 +65,18 @@ program huertaDeToni {
 	
 	// MOSTRAR EL ESTADO
 	keyboard.space().onPressDo({
-	game.say(toni, "Tengo" + toni.monedasDeOro() + "monedas y me quedan" + toni.plantasSembradas().size() + "plantas para vender" )
+	game.say(toni, "Moneda:" + toni.monedasDeOro() + " Sembrado:" + toni.plantasSembradas().size() + " AVender:" + toni.dineroAVender())
 	})
 	
 	//info
 	keyboard.d().onPressDo({
-	game.say(toni, "Las monedas me alcanzan para " + toni.paraCuantosDiasLeAlcanza() + "dias." )
+	game.say(toni, "Monedas para " + toni.paraCuantosDiasLeAlcanza() + "dias." )
 	
 	})
 	
 	//info
 	keyboard.e().onPressDo({
-	game.say(toni, "Plantas sembradas apto celiacos: " + toni.cuantoHayParaCeliacos())
+	game.say(toni, "Apto celiacos: " + toni.cuantoHayParaCeliacos())
 	
 	})
 	
