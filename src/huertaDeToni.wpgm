@@ -39,7 +39,6 @@ program huertaDeToni {
 		toni.regarLasPlantas()
 	})
 	
-	//debe regar solo la planta en el lugar actual
 	keyboard.r().onPressDo({
 	toni.regarActual(game.colliders(toni))
 	})
@@ -54,10 +53,9 @@ program huertaDeToni {
 		toni.cosecharTodo()	
 	})
 	keyboard.c().onPressDo({
-		//No se esta eliminando la planta de la celda.
 		toni.cosecharActual(game.colliders(toni))
 	})
-	
+		
 	// VENDER LA COSECHA
 	keyboard.v().onPressDo({
 	// LA VENTA SE REFLEJA EN MONEDAS DE ORO
