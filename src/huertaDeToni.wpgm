@@ -9,19 +9,15 @@ program huertaDeToni {
 	game.width(15)
 	game.height(15)
 	
-	// Agregamos al amigo Toni.
 	game.addVisual(toni)
 	
-	// Configuramos una imagen de fondo, que se repite para cada celda del tablero.
 	game.ground("tierra.png")
 		
-	// MOVIMIENTOS
 	keyboard.up().onPressDo({toni.moverNorte()})
 	keyboard.down().onPressDo({toni.moverSur()})
 	keyboard.right().onPressDo({toni.moverEste()})
 	keyboard.left().onPressDo({toni.moverOeste()})
 	
-	// SEMBRAR PLANTAS
 	keyboard.m().onPressDo({ 
 		toni.sembrarMaiz()
 	})
@@ -34,7 +30,6 @@ program huertaDeToni {
 		toni.sembrarTomaco()
 	})
 	
-	// REGAR UNA Y TODAS LAS PLANTAS (VER TEMA QUE RIEGE CUALQUIERA)
 	keyboard.a().onPressDo({
 		toni.regarLasPlantas()
 	})
@@ -43,8 +38,6 @@ program huertaDeToni {
 	toni.regarActual(game.colliders(toni))
 	})
 	
-	// COSECHAR UNA Y TODAS LAS PLANTAS
-	//info
 	keyboard.p().onPressDo({
 	game.say(toni, "Hay" + toni.plantasListasParaCosechar().size() + "plantas para cosechar. Son estas:" + toni.plantasListasParaCosechar() )
 	})
@@ -56,30 +49,24 @@ program huertaDeToni {
 		toni.cosecharActual(game.colliders(toni))
 	})
 		
-	// VENDER LA COSECHA
 	keyboard.v().onPressDo({
-	// LA VENTA SE REFLEJA EN MONEDAS DE ORO
 	toni.venderCosecha()
 	})
 	
-	// MOSTRAR EL ESTADO
 	keyboard.space().onPressDo({
 	game.say(toni, "Moneda:" + toni.monedasDeOro() + " Sembrado:" + toni.plantasSembradas().size() + " AVender:" + toni.dineroAVender())
 	})
 	
-	//info
 	keyboard.d().onPressDo({
 	game.say(toni, "Monedas para " + toni.paraCuantosDiasLeAlcanza() + "dias." )
 	
 	})
 	
-	//info
 	keyboard.e().onPressDo({
 	game.say(toni, "Apto celiacos: " + toni.cuantoHayParaCeliacos())
 	
 	})
 	
-	//info
 	keyboard.g().onPressDo({
 	game.say(toni, "Conviene regar?: " + toni.convieneRegar())
 	

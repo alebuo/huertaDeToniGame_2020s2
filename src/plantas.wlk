@@ -14,21 +14,20 @@ class Plantas{
 class Maiz inherits Plantas{
 	const property imagenes = ["maiz_bebe.png", "maiz_adulto.png"] 
 	var property etapaEvolucion = 0
-	var property imagen = imagenes.get(etapaEvolucion)
+	override method image() = imagenes.get(etapaEvolucion)
 	
 	override method monedasQueVale(){ return if(pachamama.estaAgradecida()) 180 else 150 }
 	override method regada() { 
 		etapaEvolucion = 1 
-		imagen = imagenes.get(etapaEvolucion)
+		image = imagenes.get(etapaEvolucion)
 	}
 	override method esCosechable() { return etapaEvolucion == 1}
 }
 
-
 class Trigo inherits Plantas{
 	const property imagenes = ["trigo_0.png", "trigo_1.png", "trigo_2.png", "trigo_3.png"]
 	var property etapaEvolucion = 0
-	var property imagen = imagenes.get(etapaEvolucion)
+	override method image() = imagenes.get(etapaEvolucion)
 	
 	override method monedasQueVale(){
 		return if (etapaEvolucion == 2) 100 
@@ -39,23 +38,25 @@ class Trigo inherits Plantas{
 	method nroEvolucion(){
 		return if (pachamama.estaAgradecida()) 2 else 1
 	}
-	
-	override method regada() {
-		if (etapaEvolucion == 3) { etapaEvolucion = 0} 
-		else { etapaEvolucion += self.nroEvolucion() }
-		imagen = imagenes.get(etapaEvolucion)
+	method valorN(){
+		//Con pacha agradecida da 1, sino da 0
+		return self.nroEvolucion()-1
 	}
-	
+	override method regada() {
+		if (etapaEvolucion == 3) { etapaEvolucion = self.valorN()} 
+		else if(etapaEvolucion == 2){etapaEvolucion = etapaEvolucion+1-self.valorN()*3}
+		else { etapaEvolucion += self.nroEvolucion()}
+		image = imagenes.get(etapaEvolucion)
+	}
 	override method esCosechable() { return etapaEvolucion >= 2 }
 	override method esLibreDeGluten(){return false}
 }
-
 
 class Tomaco inherits Plantas {
 	
 	const property imagenes = ["tomaco_podrido.png", "tomaco_ok.png"]
 	var property etapaEvolucion = 1
-	var property imagen = imagenes.get(etapaEvolucion) 
+	override method image() = imagenes.get(etapaEvolucion)
 
 	override method monedasQueVale(){return if (self.tomacoEstaPodrido()) 0 else 80 }	
 	override method regada() {}
@@ -67,6 +68,3 @@ class Tomaco inherits Plantas {
 		return agradecida
 	}
 }
-
-
-
