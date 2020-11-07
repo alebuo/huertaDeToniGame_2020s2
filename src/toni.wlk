@@ -91,4 +91,15 @@ object toni {
 	method convieneRegar(){
 		return not plantasSembradas.all({p => p.esCosechable()})
 	}
+	
+	method ofrendaALaPachamama(){
+		
+		plantasSembradas.anyOne({p => p.remove()})
+		
+		if ( not pachamama.estaAgradecida() ) {
+			pachamama.nivelDeAgradecimiento(10)}
+		
+		pachamama.llover()
+	}
+	
 }
