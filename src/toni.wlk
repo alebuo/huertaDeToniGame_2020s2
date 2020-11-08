@@ -12,30 +12,27 @@ object toni {
 	const property plantasCosechadas = []
 	
 	// Movimientos de Toni al estilo PacMan
-	method posicionNorte() {return if (self.position().y() < 15) { self.position().up(1)} else { self.position().down(15) } }
+	method posicionNorte() {return if (self.position().y() < 14) { self.position().up(1)} else { self.position().down(14) } }
 	method moverNorte(){ self.position(self.posicionNorte()) }
-	method posicionSur() {return if (self.position().y() > 0) { self.position().down(1)} else { self.position().up(15) } }
+	method posicionSur() {return if (self.position().y() > 0) { self.position().down(1)} else { self.position().up(14) } }
 	method moverSur(){ self.position(self.posicionSur()) }
-	method posicionEste() {return if (self.position().x() < 15) { self.position().right(1)} else { self.position().left(15) } }
+	method posicionEste() {return if (self.position().x() < 14) { self.position().right(1)} else { self.position().left(14) } }
 	method moverEste(){ self.position(self.posicionEste()) }
-	method posicionOeste() {return if (self.position().x() > 0) { self.position().left(1)} else { self.position().right(15) } }
-	method moverOeste(){ self.position(self.position().posicionOeste())}
+	method posicionOeste() {return if (self.position().x() > 0) { self.position().left(1)} else { self.position().right(14) } }
+	method moverOeste(){ self.position(self.posicionOeste())}
 	
 	// SEMBRAR MAIZ
 	method sembrar(planta){
-		// position.clone().drawElement(planta)
 		plantasSembradas.add(planta)
-		//posicionPlantas.add(position)
 		game.addVisual(planta)		
 	}
+	method existeAlgoEnEstaPosicion() = game.colliders(self).size()>0
 	method posicionSiembra() { return position.clone() }
 	
-	method sembrarMaiz(){ self.sembrar(new Maiz(position=self.posicionSiembra())) }
-	method sembrarTrigo(){ self.sembrar(new Trigo(position=self.posicionSiembra())) }
-	method sembrarTomaco(){ self.sembrar(new Tomaco(position=self.posicionSiembra())) }
-	
-	
-	
+	method sembrarMaiz(){ if(not self.existeAlgoEnEstaPosicion()) self.sembrar(new Maiz(position=self.posicionSiembra())) }
+	method sembrarTrigo(){ if(not self.existeAlgoEnEstaPosicion()) self.sembrar(new Trigo(position=self.posicionSiembra())) }
+	method sembrarTomaco(){ if(not self.existeAlgoEnEstaPosicion()) self.sembrar(new Tomaco(position=self.posicionSiembra())) }
+		
 	// METHODS REGAR
 
 	method regarLasPlantas(){

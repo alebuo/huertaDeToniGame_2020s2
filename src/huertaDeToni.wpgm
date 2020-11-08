@@ -41,6 +41,10 @@ program huertaDeToni {
 	keyboard.p().onPressDo({
 	game.say(toni, "Hay" + toni.plantasListasParaCosechar().size() + "plantas para cosechar. Son estas:" + toni.plantasListasParaCosechar() )
 	})
+	//Solamente a nivel consulta de indicar existencia en celda donde esta Toni parado.
+	keyboard.w().onPressDo({
+	game.say(toni, "Hay" + toni.existeAlgoEnEstaPosicion())
+	})
 	
 	keyboard.x().onPressDo({
 		toni.cosecharTodo()	
@@ -54,7 +58,7 @@ program huertaDeToni {
 	})
 	
 	keyboard.space().onPressDo({
-	game.say(toni, "Moneda:" + toni.monedasDeOro() + " Sembrado:" + toni.plantasSembradas().size() + " AVender:" + toni.dineroAVender())
+	game.say(toni, "Monedas:" + toni.monedasDeOro() + " Sembrado:" + toni.plantasSembradas().size() + " AVender:" + toni.dineroAVender())
 	})
 	
 	keyboard.d().onPressDo({
@@ -72,8 +76,12 @@ program huertaDeToni {
 	
 	})
 	
+	keyboard.g().onPressDo({
+	toni.ofrendaALaPachamama()
+	game.say(toni, "PachamamaNivel Agradecimiento: " + pachamama.nivelDeAgradecimiento())
 	
-	
+	})
+		
 	/*
 	 * Acá usamos addVisualIn en vez de addVisual, y por esto 
 	 * no es necesario que la pachamama conozca su position.
