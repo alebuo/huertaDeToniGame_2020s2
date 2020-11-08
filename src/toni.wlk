@@ -11,10 +11,15 @@ object toni {
 	var property monedasDeOro = 0
 	const property plantasCosechadas = []
 	
-	method moverNorte(){ self.position(self.position().up(1)) }
-	method moverSur(){ self.position(self.position().down(1)) }
-	method moverEste(){ self.position(self.position().right(1))}
-	method moverOeste(){ self.position(self.position().left(1))}
+	// Movimientos de Toni al estilo PacMan
+	method posicionNorte() {return if (self.position().y() < 15) { self.position().up(1)} else { self.position().down(15) } }
+	method moverNorte(){ self.position(self.posicionNorte()) }
+	method posicionSur() {return if (self.position().y() > 0) { self.position().down(1)} else { self.position().up(15) } }
+	method moverSur(){ self.position(self.posicionSur()) }
+	method posicionEste() {return if (self.position().x() < 15) { self.position().right(1)} else { self.position().left(15) } }
+	method moverEste(){ self.position(self.posicionEste()) }
+	method posicionOeste() {return if (self.position().x() > 0) { self.position().left(1)} else { self.position().right(15) } }
+	method moverOeste(){ self.position(self.position().posicionOeste())}
 	
 	// SEMBRAR MAIZ
 	method sembrar(planta){
