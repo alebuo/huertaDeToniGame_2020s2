@@ -76,9 +76,9 @@ program huertaDeToni {
 	
 	})
 	
-	keyboard.g().onPressDo({
+	keyboard.h().onPressDo({
 	toni.ofrendaALaPachamama()
-	game.say(toni, "PachamamaNivel Agradecimiento: " + pachamama.nivelDeAgradecimiento())
+	game.say(toni, "Pachamama Agradecimiento: " + pachamama.nivelDeAgradecimiento())
 	
 	})
 		
