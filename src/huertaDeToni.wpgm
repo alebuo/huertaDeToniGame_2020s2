@@ -56,6 +56,9 @@ program huertaDeToni {
 	keyboard.v().onPressDo({
 	toni.venderCosecha()
 	})
+	keyboard.y().onPressDo({
+	toni.ofrendaALaPachamama()
+	})
 	
 	keyboard.space().onPressDo({
 	game.say(toni, "Monedas:" + toni.monedasDeOro() + " Sembrado:" + toni.plantasSembradas().size() + " AVender:" + toni.dineroAVender())
@@ -77,11 +80,10 @@ program huertaDeToni {
 	})
 	
 	keyboard.h().onPressDo({
-	toni.ofrendaALaPachamama()
 	game.say(toni, "Pachamama Agradecimiento: " + pachamama.nivelDeAgradecimiento())
 	
 	})
-		
+	
 	/*
 	 * Acá usamos addVisualIn en vez de addVisual, y por esto 
 	 * no es necesario que la pachamama conozca su position.
