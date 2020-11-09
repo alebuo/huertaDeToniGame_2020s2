@@ -71,14 +71,25 @@ object toni {
 	// VENDER
 	// ========
 	method venderPlanta(planta){
-		monedasDeOro += planta.monedasQueVale()
 		plantasCosechadas.remove(planta)
+		const monedasRecibidasPorVenta = game.colliders(self).get(0).comprar(planta)
+		monedasDeOro += monedasRecibidasPorVenta
 	}
+	
+	method hayMercado() { return game.colliders(self) == 'un/a  Mercado' }
+	method tieneMonedasMercado() { return game.colliders(self).get(0).cantMonedas()}
 	
 	method venderCosecha(){
-		plantasCosechadas.forEach({planta => self.venderPlanta(planta)})
+		if (self.tieneMonedasMercado() and self.tieneMonedasMercado()>= self.dineroAVender()) {
+			plantasCosechadas.forEach({planta => self.venderPlanta(planta)})
+		} else {
+			if (not self.hayMercado()) { game.say(self, "Aquí no hay un mercado") } else {
+				if (self.tieneMonedasMercado()>= self.dineroAVender()) {
+					game.say(self, "El mercado no tiene suficientes monedas para comprar")
+					}
+			}
+		}
 	}
-	
 	
 	method dineroAVender() {
 		return plantasCosechadas.sum({d => d.monedasQueVale()})

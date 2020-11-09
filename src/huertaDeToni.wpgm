@@ -9,9 +9,15 @@ program huertaDeToni {
 	game.width(15)
 	game.height(15)
 	
-	game.addVisual(toni)
-	
 	game.ground("tierra.png")
+	
+	game.addVisual(toni)
+
+	// tres mercados en posicion fija (se puede hacer aleatorio)
+	game.addVisual(new Mercado(position=game.at(2,1)))
+	game.addVisual(new Mercado(position=game.at(12,6)))
+	game.addVisual(new Mercado(position=game.at(4,14)))
+
 		
 	keyboard.up().onPressDo({toni.moverNorte()})
 	keyboard.down().onPressDo({toni.moverSur()})
