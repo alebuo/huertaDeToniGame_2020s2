@@ -29,9 +29,9 @@ object toni {
 	method existeAlgoEnEstaPosicion() = game.colliders(self).size()>0
 	method posicionSiembra() { return position.clone() }
 	
-	method sembrarMaiz(){ if(not self.existeAlgoEnEstaPosicion()) self.sembrar(new Maiz(position=self.posicionSiembra())) }
-	method sembrarTrigo(){ if(not self.existeAlgoEnEstaPosicion()) self.sembrar(new Trigo(position=self.posicionSiembra())) }
-	method sembrarTomaco(){ if(not self.existeAlgoEnEstaPosicion()) self.sembrar(new Tomaco(position=self.posicionSiembra())) }
+	method sembrarMaiz(){ if(not self.existeAlgoEnEstaPosicion()) self.sembrar(new Maiz(position=self.posicionSiembra())) else self.error("Ya existe una planta en este lugar")}
+	method sembrarTrigo(){ if(not self.existeAlgoEnEstaPosicion()) self.sembrar(new Trigo(position=self.posicionSiembra())) else self.error("Ya existe una planta en este lugar")}
+	method sembrarTomaco(){ if(not self.existeAlgoEnEstaPosicion()) self.sembrar(new Tomaco(position=self.posicionSiembra())) else self.error("Ya existe una planta en este lugar")}
 		
 	// METHODS REGAR
 
