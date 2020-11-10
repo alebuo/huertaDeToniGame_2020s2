@@ -10,7 +10,7 @@ class Mercado {
 	var property mercaderia =[]
 	
 	method comprar(planta) {
-		const monedasAPagar = planta.valorPlanta()
+		const monedasAPagar = planta.monedasQueVale()
 		mercaderia.add(planta)
 		cantMonedas -= monedasAPagar
 		return monedasAPagar

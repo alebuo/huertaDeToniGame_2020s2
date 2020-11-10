@@ -14,9 +14,13 @@ program huertaDeToni {
 	game.addVisual(toni)
 
 	// tres mercados en posicion fija (se puede hacer aleatorio)
-	game.addVisual(new Mercado(position=game.at(2,1)))
-	game.addVisual(new Mercado(position=game.at(12,6)))
-	game.addVisual(new Mercado(position=game.at(4,14)))
+	const mercado1 = new Mercado(position=game.at(2,1))
+	const mercado2 = new Mercado(position=game.at(12,6))
+	const mercado3 = new Mercado(position=game.at(4,14))
+	
+	game.addVisual(mercado1)
+	game.addVisual(mercado2)
+	game.addVisual(mercado3)
 
 		
 	keyboard.up().onPressDo({toni.moverNorte()})
@@ -49,7 +53,10 @@ program huertaDeToni {
 	})
 	//Solamente a nivel consulta de indicar existencia en celda donde esta Toni parado.
 	keyboard.w().onPressDo({
-	game.say(toni, "Hay" + toni.existeAlgoEnEstaPosicion())
+	game.say(toni, "Hay" + toni.hayMercado())
+	})
+	keyboard.k().onPressDo({
+	game.say(toni, " " + game.colliders(toni))
 	})
 	
 	keyboard.x().onPressDo({

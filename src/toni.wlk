@@ -76,20 +76,21 @@ object toni {
 		monedasDeOro += monedasRecibidasPorVenta
 	}
 	
-	method hayMercado() { return game.colliders(self) == 'un/a  Mercado' }
-	method tieneMonedasMercado() { return game.colliders(self).get(0).cantMonedas()}
+	//method hayMercado() = game.colliders(self)=='un/a Mercado'
+	//method hayMercado() = not game.colliders(self).isEmpty()
+	method hayMercado(){
+		return game.colliders(self).contains('un/a  Mercado')
+	}
+	method tieneMonedasMercado() = game.colliders(self).get(0).cantMonedas()
 	
 	method venderCosecha(){
-		if (self.tieneMonedasMercado() and self.tieneMonedasMercado()>= self.dineroAVender()) {
+		if (self.hayMercado() and self.tieneMonedasMercado()>= self.dineroAVender()) {
 			plantasCosechadas.forEach({planta => self.venderPlanta(planta)})
 		} else {
-			if (not self.hayMercado()) { game.say(self, "Aquí no hay un mercado") } else {
-				if (self.tieneMonedasMercado()>= self.dineroAVender()) {
-					game.say(self, "El mercado no tiene suficientes monedas para comprar")
-					}
+			game.say(self, "No se puede vender la cosecha")
 			}
 		}
-	}
+	
 	
 	method dineroAVender() {
 		return plantasCosechadas.sum({d => d.monedasQueVale()})
