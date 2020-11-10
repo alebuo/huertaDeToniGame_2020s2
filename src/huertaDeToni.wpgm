@@ -28,90 +28,63 @@ program huertaDeToni {
 	keyboard.right().onPressDo({toni.moverEste()})
 	keyboard.left().onPressDo({toni.moverOeste()})
 	
-	keyboard.m().onPressDo({ 
-		toni.sembrarMaiz()
-	})
+	keyboard.m().onPressDo({ toni.sembrarMaiz() })
 	
-	keyboard.t().onPressDo({
-		toni.sembrarTrigo()
-	})
+	keyboard.t().onPressDo({ toni.sembrarTrigo() })
 	
-	keyboard.o().onPressDo({
-		toni.sembrarTomaco()
-	})
+	keyboard.o().onPressDo({ toni.sembrarTomaco() })
 	
-	keyboard.a().onPressDo({
-		toni.regarLasPlantas()
-	})
+	keyboard.a().onPressDo({ toni.regarLasPlantas() })
 	
-	keyboard.r().onPressDo({
-	toni.regarActual(game.colliders(toni))
-	})
+	keyboard.r().onPressDo({ toni.regarActual(game.colliders(toni)) })
 	
 	keyboard.p().onPressDo({
-	game.say(toni, "Hay" + toni.plantasListasParaCosechar().size() + "plantas para cosechar. Son estas:" + toni.plantasListasParaCosechar() )
-	})
-	//Solamente a nivel consulta de indicar existencia en celda donde esta Toni parado.
-	keyboard.w().onPressDo({
-	game.say(toni, "Hay" + toni.hayMercado())
-	})
-	keyboard.k().onPressDo({
-	game.say(toni, " " + game.colliders(toni))
+	game.say(toni, "Hay: " + toni.plantasListasParaCosechar().size() + "plantas para cosechar. Son estas: " + toni.plantasListasParaCosechar() )
 	})
 	
-	keyboard.x().onPressDo({
-		toni.cosecharTodo()	
-	})
-	keyboard.c().onPressDo({
-		toni.cosecharActual(game.colliders(toni))
-	})
+	//Solamente a nivel consulta de indicar existencia en celda donde esta Toni parado.
+	keyboard.w().onPressDo({ game.say(toni, "Hay " + toni.hayMercado()) })
+	
+	keyboard.k().onPressDo({ game.say(toni, " " + game.colliders(toni)) })
+	
+	keyboard.x().onPressDo({ toni.cosecharTodo() })
+	
+	keyboard.c().onPressDo({ toni.cosecharActual(game.colliders(toni)) })
 		
-	keyboard.v().onPressDo({
-	toni.venderCosecha()
-	})
-	keyboard.y().onPressDo({
-	toni.ofrendaALaPachamama()
-	})
+	keyboard.v().onPressDo({ toni.venderCosecha()  })
+	
+	//keyboard.y().onPressDo({ toni.ofrendaALaPachamama() })
 	
 	keyboard.space().onPressDo({
-	game.say(toni, "Monedas:" + toni.monedasDeOro() + " Sembrado:" + toni.plantasSembradas().size() + " AVender:" + toni.dineroAVender())
+	game.say(toni, "Monedas: " + toni.monedasDeOro() + " Sembrado: " + toni.plantasSembradas().size() + " AVender: " + toni.dineroAVender())
 	})
 	
 	keyboard.d().onPressDo({
-	game.say(toni, "Monedas para " + toni.paraCuantosDiasLeAlcanza() + "dias." )
-	
+	game.say(toni, "Monedas alcanza para " + toni.paraCuantosDiasLeAlcanza() + "dias." )
 	})
 	
 	keyboard.e().onPressDo({
 	game.say(toni, "Apto celiacos: " + toni.cuantoHayParaCeliacos())
-	
 	})
 	
 	keyboard.g().onPressDo({
 	game.say(toni, "Conviene regar?: " + toni.convieneRegar())
-	
 	})
 	
 	keyboard.h().onPressDo({
 	game.say(toni, "Pachamama Agradecimiento: " + pachamama.nivelDeAgradecimiento())
-	
 	})
 	
 	game.addVisualIn(pachamama, game.at(0, 13));
 	
-	game.whenCollideDo(pachamama, { e => e.ofrendaALaPachamama() toni.bajar()
-	})
+	game.whenCollideDo(pachamama, { e => e.ofrendaALaPachamama() toni.bajar() })
 	
 	
 	// FUMIGAR		
-	keyboard.f().onPressDo({
-		pachamama.fumigar()
-	})
+	keyboard.f().onPressDo({ pachamama.fumigar() })
 	
 	// LLOVER		
-	keyboard.l().onPressDo({
-		pachamama.llover()
-	})
+	keyboard.l().onPressDo({ pachamama.llover()})
 	
 	keyboard.z().onPressDo { game.stop() }
 			
