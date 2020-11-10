@@ -62,11 +62,13 @@ object toni {
 	
 	method cosecharActual(planta) { 
 		if(planta.any({p => p.esCosechable()}))	{
-		self.agregarACosecha(planta) 
-		planta.forEach( {p => self.cosecharPlanta(p)}) 
-		game.colliders(self).forEach({pl => game.removeVisual(pl)})
-		}
-		}
+			self.agregarACosecha(planta) 
+			planta.forEach( {p => self.cosecharPlanta(p)}) 
+			game.colliders(self).forEach({pl => game.removeVisual(pl)})
+			}
+		else { game.say(self, "La planta no es cosechable") }	
+	}
+	
 		
 	// VENDER
 	// ========
