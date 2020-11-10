@@ -18,18 +18,9 @@ object pachamama {
 	}
 	
 	method cambiarImgPachamama(){
-		if (self.estaAgradecida()) {image = "pachamama-agradecida.png"}
-			else { image = "pachamama-triste.png" 
-				self.pudrirPlantasInjerto()
-			}
+		if (self.estaAgradecida()) {image = "pachamama-agradecida.png"	self.pudrirPlantasInjerto()	}
+			else { image = "pachamama-triste.png" }
 	}
-	
-	method pudrirPlantasInjerto(){
-		toni.plantasSembradas().map({a=>a =='un/a  Tomaco'}).forEach( {planta => planta.pudrirTomaco()} )				
-	}
-	method agradecimiento(){
-		if (not self.estaAgradecida()) self.nivelDeAgradecimiento(10) else self.llover()
-		
-	}
-	
+	method pudrirPlantasInjerto()= toni.plantasSembradas().forEach( {p => p.pudrir()} )
+	method agradecimiento()=if (not self.estaAgradecida()) self.nivelDeAgradecimiento(10) else self.llover()
 }

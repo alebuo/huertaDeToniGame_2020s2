@@ -9,7 +9,8 @@ class Plantas{
 	method monedasQueVale()
 	method regada()
 	method esCosechable()	
-	method esLibreDeGluten(){return true}	
+	method esLibreDeGluten(){return true}
+	method pudrir()
 }
 class Maiz inherits Plantas{
 	const property imagenes = ["maiz_bebe.png", "maiz_adulto.png"] 
@@ -22,6 +23,7 @@ class Maiz inherits Plantas{
 		image = imagenes.get(etapaEvolucion)
 	}
 	override method esCosechable() { return etapaEvolucion == 1}
+	override method pudrir(){}
 }
 
 class Trigo inherits Plantas{
@@ -50,20 +52,20 @@ class Trigo inherits Plantas{
 	}
 	override method esCosechable() { return etapaEvolucion >= 2 }
 	override method esLibreDeGluten(){return false}
+	override method pudrir(){}
 }
 
 class Tomaco inherits Plantas {
-	
 	const property imagenes = ["tomaco_podrido.png", "tomaco_ok.png"]
-	var property etapaEvolucion = if(not pachamama.estaAgradecida()){1}else{0}
+	var property etapaEvolucion = 1
 	override method image() = imagenes.get(etapaEvolucion)
 
 	override method monedasQueVale(){return if (self.tomacoEstaPodrido()) 0 else 80 }	
 	override method regada() {}
 	override method esCosechable() { return not self.tomacoEstaPodrido() }
-	method pudrirTomaco(){
-		etapaEvolucion = 0
-		image = imagenes.get(etapaEvolucion)
+	override method pudrir(){  
+		etapaEvolucion=0	
+		image= imagenes.get(etapaEvolucion)
 	}
 	method tomacoEstaPodrido(){ 
 		return etapaEvolucion==0

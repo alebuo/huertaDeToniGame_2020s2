@@ -79,7 +79,7 @@ program huertaDeToni {
 	
 	game.whenCollideDo(pachamama, { e => e.ofrendaALaPachamama() toni.bajar() })
 	
-	
+		
 	// FUMIGAR		
 	keyboard.f().onPressDo({ toni.fumigar() })
 	
