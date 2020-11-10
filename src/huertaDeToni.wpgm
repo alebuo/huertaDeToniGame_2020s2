@@ -81,7 +81,7 @@ program huertaDeToni {
 	
 	
 	// FUMIGAR		
-	keyboard.f().onPressDo({ pachamama.fumigar() })
+	keyboard.f().onPressDo({ toni.fumigar() })
 	
 	// LLOVER		
 	keyboard.l().onPressDo({ pachamama.llover()})

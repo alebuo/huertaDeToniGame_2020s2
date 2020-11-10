@@ -86,7 +86,7 @@ object toni {
 	}
 		method venderCosecha(){
 		if (self.hayAlgoMas() and self.hayMercado() and self.tieneSuficientesMonedasMercado()) {
-			plantasCosechadas.forEach({planta => self.venderPlanta(planta)})
+			plantasCosechadas.forEach({planta => self.venderPlanta(planta) game.say(self, "Cosecha Vendida!")})
 		} else {
 			game.say(self, "No se puede vender la cosecha")
 			}
@@ -105,12 +105,22 @@ object toni {
 	method convieneRegar(){
 		return not plantasSembradas.all({p => p.esCosechable()})
 	}
-	
+
 	method ofrendaALaPachamama(){
-		const unaPlantaAlAzar=plantasSembradas.anyOne()
-		plantasSembradas.remove(unaPlantaAlAzar)
-		game.removeVisual(unaPlantaAlAzar)
-		if (not pachamama.estaAgradecida()) pachamama.nivelDeAgradecimiento(10) else pachamama.llover()}
-		
+		const unaPlantaAlAzar=if(not plantasSembradas.isEmpty()){ plantasSembradas.anyOne()}else{ []}
+		if(not plantasSembradas.filter({a=>a.etapaEvolucion()>=0}).isEmpty()){
+			plantasSembradas.remove(unaPlantaAlAzar)
+			game.removeVisual(unaPlantaAlAzar)
+			pachamama.agradecimiento()
+			}else{
+			game.say(self, "No hay siembra para ofrendar")
+			}
+		}
+	
 	method bajar(){	position = position.down(1)	}
+
+	method fumigar(){
+		pachamama.nivelDeAgradecimiento(0)
+		pachamama.cambiarImgPachamama()
+	}
 }

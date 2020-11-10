@@ -55,16 +55,17 @@ class Trigo inherits Plantas{
 class Tomaco inherits Plantas {
 	
 	const property imagenes = ["tomaco_podrido.png", "tomaco_ok.png"]
-	var property etapaEvolucion = 1
+	var property etapaEvolucion = if(not pachamama.estaAgradecida()){1}else{0}
 	override method image() = imagenes.get(etapaEvolucion)
 
 	override method monedasQueVale(){return if (self.tomacoEstaPodrido()) 0 else 80 }	
 	override method regada() {}
 	override method esCosechable() { return not self.tomacoEstaPodrido() }
-	
+	method pudrirTomaco(){
+		etapaEvolucion = 0
+		image = imagenes.get(etapaEvolucion)
+	}
 	method tomacoEstaPodrido(){ 
-		const agradecida = pachamama.estaAgradecida()
-		if (not agradecida) etapaEvolucion = 1 else etapaEvolucion = 0
-		return agradecida
+		return etapaEvolucion==0
 	}
 }
