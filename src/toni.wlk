@@ -76,21 +76,18 @@ object toni {
 		monedasDeOro += monedasRecibidasPorVenta
 	}
 	
-	//method hayMercado() = game.colliders(self)=='un/a Mercado'
-	//method hayMercado() = not game.colliders(self).isEmpty()
-	method hayMercado(){
-		return game.colliders(self).contains('un/a  Mercado')
-	}
+	method hayMercado(){ return game.colliders(self).get(0).toString() == 'un/a  Mercado' }
 	method tieneMonedasMercado() = game.colliders(self).get(0).cantMonedas()
-	
-	method venderCosecha(){
-		if (self.hayMercado() and self.tieneMonedasMercado()>= self.dineroAVender()) {
+	method tieneSuficientesMonedasMercado(){
+		return self.tieneMonedasMercado()>= self.dineroAVender()
+	}
+		method venderCosecha(){
+		if (self.hayMercado() and self.tieneSuficientesMonedasMercado()) {
 			plantasCosechadas.forEach({planta => self.venderPlanta(planta)})
 		} else {
 			game.say(self, "No se puede vender la cosecha")
 			}
 		}
-	
 	
 	method dineroAVender() {
 		return plantasCosechadas.sum({d => d.monedasQueVale()})
@@ -107,13 +104,10 @@ object toni {
 	}
 	
 	method ofrendaALaPachamama(){
+		const unaPlantaAlAzar=plantasSembradas.anyOne()
+		plantasSembradas.remove(unaPlantaAlAzar)
+		game.removeVisual(unaPlantaAlAzar)
+		if (not pachamama.estaAgradecida()) pachamama.nivelDeAgradecimiento(10) else pachamama.llover()}
 		
-		plantasSembradas.anyOne({p => p.remove()})
-		
-		if ( not pachamama.estaAgradecida() ) {
-			pachamama.nivelDeAgradecimiento(10)}
-		
-		pachamama.llover()
-	}
-	
+	method bajar(){	position = position.down(1)	}
 }
